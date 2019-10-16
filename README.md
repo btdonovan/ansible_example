@@ -1,4 +1,4 @@
-This private repository stores ansible inventory, roles, and playbooks for a 
+This repository stores ansible inventory, roles, and playbooks for a 
 linux training Lab.
 
 Tests for configuration changes will occur in a testing branch. The Master 
