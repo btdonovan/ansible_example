@@ -1,0 +1,6 @@
+---
+  - name: dconf update
+    command: /usr/bin/dconf update
+    sudo: true
+
+...

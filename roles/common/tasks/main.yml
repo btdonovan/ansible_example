@@ -1,0 +1,16 @@
+---
+# This playbook contains configuration items that will apply to all systems.
+
+
+  - name: Copy etc issue file
+    copy: src=issue dest=/etc/issue mode=644 owner=root group=root
+    sudo: true
+  - name: Disable and stop chronyd
+    service: name=chronyd state=stopped enabled=no
+    sudo: true
+  - name: Enable and start ntpd
+    service: name=ntpd state=started enabled=yes
+    sudo: true
+  - name: Delete tng local user
+    user: name=tng state=absent
+    sudo: true

@@ -1,0 +1,26 @@
+---
+# This playbook contains configuration items for Gnome and GDM.
+
+  - name: Copy gdm login configuration
+    copy: src=01-banner-message dest=/etc/dconf/db/gdm.d/01-banner-message mode=644 owner=root group=root
+    notify: dconf update
+    sudo: true
+  - name: Copy gdm profile
+    copy: src=gdm dest=/etc/dconf/profile/gdm mode=644 owner=root group=root
+    notify: dconf update
+    sudo: true
+  - name: Create google-chrome.repo
+    copy: src=google-chrome.repo dest=/etc/yum.repos.d/google-chrome.repo mode=644 owner=root group=root
+#    yumrepo:
+#      - description: google-chrome
+#      - name: google-chrome
+#      - baseurl: http://dl.google.com/linux/chrome/rpm/stable/$basearch
+#      - enabled: yes
+#      - gpgcheck: yes
+#      - gpgkey: https://dl-ssl.google.com/linux/linux_signing_key.pub
+    sudo: true
+  - name: Ensure Google Chrome is installed.
+    yum: name=google-chrome-stable state=present
+    sudo: true
+
+...
